@@ -21,24 +21,7 @@ const cors = require("cors");
 
 dbConnect();
 app.use(morgan("dev"));
-// app.use(cors({
-//   origin: 'https://mern-e-commerce-user-side.vercel.app',
-// }));
-
-app.use((req, res, next) => {
-  // Set the Access-Control-Allow-Origin header to allow requests from your frontend origin
-  res.setHeader('Access-Control-Allow-Origin', 'https://mern-e-commerce-user-side.vercel.app');
-
-  // Set other necessary CORS headers
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
-
-  // Allow credentials if needed (e.g., for handling cookies)
-  res.setHeader('Access-Control-Allow-Credentials', 'true');
-
-  next();
-});
-
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
