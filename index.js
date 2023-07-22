@@ -21,11 +21,7 @@ const cors = require("cors");
 
 dbConnect();
 app.use(morgan("dev"));
-app.use(cors({
-  origin: ['https://mern-e-commerce-user-side.vercel.app'],
-  methods: ["POST", "GET", "PUT", "DELETE"],
-  credentials: true
-}));
+app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
