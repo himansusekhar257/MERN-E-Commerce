@@ -18,6 +18,10 @@ const uploadRouter = require("./routes/uploadRoute");
 const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
+const corsOptions = {
+  origin: "http://localhost:3000" // frontend URI (ReactJS)
+}
+app.use(cors(corsOptions));
 
 dbConnect();
 app.use(morgan("dev"));
