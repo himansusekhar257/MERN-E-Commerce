@@ -27,12 +27,20 @@ const uploadImages = asyncHandler(async (req, res) => {
 const deleteImages = asyncHandler(async (req, res) => {
   const { id } = req.params;
   try {
-    const deleted = cloudinaryDeleteImg(id, "images");
-    res.json({ message: "Deleted" });
+    // Perform deletion operation
+    const deleted = await cloudinaryDeleteImg(id, "images");
+
+    // Check if the deletion was successful
+    if (deleted) {
+      res.status(200).json({ message: "Image deleted successfully" });
+    } else {
+      res.status(404).json({ message: "Image not found" });
+    }
   } catch (error) {
-    throw new Error(error);
+    res.status(500).json({ message: "Internal server error" });
   }
 });
+
 
 module.exports = {
   uploadImages,
