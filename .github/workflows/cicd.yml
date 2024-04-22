@@ -27,8 +27,4 @@ jobs:
       - name: Stop and remove previous container if exists
         run: docker stop ecomerce_backend_container || true && docker rm ecomerce_backend_container || true
       - name: Run Docker Container
-        run: |
-          docker run -d -p 5000:5000 \
-          --name ecomerce_backend_container \
-          -e MONGODB_URL=${{ secrets.MONGODB_URL }} \
-          himansusekhar752/ecomerce_backend
+        run: docker run -d -p 5000:5000 --name ecomerce_backend_container -e MONGODB_URL='${{ secrets.MONGODB_URL }}' himansusekhar752/ecomerce_backend
