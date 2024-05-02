@@ -14,16 +14,16 @@ jobs:
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
       - name: Build Docker Image
-        run: docker build -t himansusekhar752/ecomerce_backend .
-      - name: Publish Image to docker hub
-        run: docker push himansusekhar752/ecomerce_backend:latest 
+        run: docker build -t himansusekhar752/ecomerce_backend:${{ github.sha }} .
+      - name: Publish Image to Docker Hub
+        run: docker push himansusekhar752/ecomerce_backend:${{ github.sha }}
 
   deploy:
     needs: build
     runs-on: self-hosted
     steps:
       - name: Pull image from Docker Hub
-        run: docker pull himansusekhar752/ecomerce_backend:latest
+        run: docker pull himansusekhar752/ecomerce_backend:${{ github.sha }}
       - name: Stop and remove previous container if exists
         run: |
           docker stop ecomerce_backend_container || true
@@ -40,4 +40,4 @@ jobs:
             -e MP='${{ secrets.MP }}' \
             -e MAIL_ID='${{ secrets.MAIL_ID }}' \
             -e JWT_SECRET='${{ secrets.JWT_SECRET }}' \
-            himansusekhar752/ecomerce_backend
+            himansusekhar752/ecomerce_backend:${{ github.sha }}
