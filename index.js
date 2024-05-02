@@ -69,7 +69,7 @@ dbConnect();
 // Middleware
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001"],
+  origin: ["http://localhost:3000", "http://localhost:3001", "http://44.202.140.63:3000/"],
   credentials: true,
 }));
 
@@ -78,6 +78,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 // Routes
+
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
 app.use("/api/blog", blogRouter);
