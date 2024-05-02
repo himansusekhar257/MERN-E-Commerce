@@ -69,7 +69,7 @@ dbConnect();
 // Middleware
 app.use(morgan("dev"));
 app.use(cors({
-  origin: ["http://localhost:3000", "http://localhost:3001", "http://44.202.140.63:3000/"],
+  origin: ["http://localhost:3000", "http://localhost:3001", "http://15.207.18.229:3000/"],
   credentials: true,
 }));
 
