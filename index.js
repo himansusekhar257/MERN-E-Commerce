@@ -63,7 +63,6 @@ const cookieParser = require("cookie-parser");
 const morgan = require("morgan");
 const cors = require("cors");
 
-// Database connection
 dbConnect();
 
 // Middleware
