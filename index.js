@@ -77,7 +77,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-// Routes
+
 
 app.use("/api/user", authRouter);
 app.use("/api/product", productRouter);
